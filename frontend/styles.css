@@ -1,0 +1,217 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background: #181a1b;
+}
+
+header {
+    background-color: #23272a;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+a {
+    color: #8ab4f8;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #4f8cff;
+    text-decoration: underline;
+}
+
+#hero {
+    background-color: #23272a;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+#hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+}
+
+section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #23272a;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.project {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #181a1b;
+}
+
+footer {
+    background-color: #23272a;
+    color: #b0b0b0;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #222;
+}
+
+/* Fade-in animation for sections */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section, header, footer {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+header {
+    animation-delay: 0.1s;
+}
+#hero {
+    animation-delay: 0.2s;
+}
+#about {
+    animation-delay: 0.3s;
+}
+#projects {
+    animation-delay: 0.4s;
+}
+#contact {
+    animation-delay: 0.5s;
+}
+footer {
+    animation-delay: 0.6s;
+}
+
+/* Smooth hover transitions for buttons and cards */
+.project {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.project:hover {
+    box-shadow: 0 4px 24px rgba(138,180,248,0.15);
+    transform: translateY(-6px) scale(1.03);
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s, border-radius 0.2s;
+}
+nav ul li a:hover {
+    background: #23272a;
+    color: #4f8cff;
+    border-radius: 6px;
+    text-decoration: underline;
+}
+
+/* Make links in the contact section visible and styled */
+#contact a {
+    color: #8ab4f8; /* LinkedIn blue */
+    text-decoration: underline;
+    font-weight: bold;
+    background: none;
+}
+
+#contact a:hover {
+    color: #4f8cff;
+}
+
+/* Contact form styling */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    background: #181a1b;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8ab4f8;
+    box-shadow: 0 0 8px rgba(138,180,248,0.2);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #8ab4f8, #4f8cff);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138,180,248,0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}

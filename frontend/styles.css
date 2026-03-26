@@ -23,9 +23,16 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+    display: block;
 }
 
 ul {
@@ -116,13 +123,13 @@ header {
     animation-delay: 0.3s;
 }
 #projects {
-    animation-delay: 0.4s;
-}
-#contact {
     animation-delay: 0.5s;
 }
-footer {
+#contact {
     animation-delay: 0.6s;
+}
+footer {
+    animation-delay: 0.7s;
 }
 
 /* Smooth hover transitions for buttons and cards */
@@ -214,4 +221,110 @@ nav ul li a:hover {
 
 .submit-btn:active {
     transform: translateY(0);
+}
+
+.stack-section {
+    padding: 2rem;
+}
+
+.stack-container {
+    max-width: 1000px;
+    width: min(100%, 1000px);
+    margin: 0 auto;
+    padding: 1rem 1.25rem 1.25rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #181a1b;
+}
+
+#stack ul {
+    list-style: none;
+    position: relative;
+    min-height: 320px;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    border-radius: 12px;
+    background: rgba(24, 26, 27, 0.65);
+    overflow: hidden;
+}
+
+#stack li {
+    position: absolute;
+    --rot: 0deg;
+    --x: 0px;
+    --y: 0px;
+    --tx: 0px;
+    --ty: 0px;
+    margin: 0;
+    padding: 0.9rem 1.2rem;
+    min-width: 200px;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.08rem;
+    font-weight: 600;
+    border: 1px solid #3a3f44;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #202326, #191c1f);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+    transform: translate(calc(var(--x) + var(--tx)), calc(var(--y) + var(--ty))) rotate(var(--rot));
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    white-space: nowrap;
+}
+
+#stack li:nth-child(odd) {
+    --rot: -1.2deg;
+}
+
+#stack li:nth-child(even) {
+    --rot: 1.1deg;
+}
+
+#stack li:hover {
+    transform: translate(calc(var(--x) + var(--tx)), calc(var(--y) + var(--ty) - 2px)) rotate(0deg);
+    border-color: #8ab4f8;
+    box-shadow: 0 5px 16px rgba(138, 180, 248, 0.2);
+}
+
+#stack li.is-dragging {
+    cursor: grabbing;
+    transition: none;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(138, 180, 248, 0.3);
+}
+
+@media (max-width: 700px) {
+    #stack ul {
+        min-height: 280px;
+    }
+
+    #stack li,
+    #stack li:nth-child(odd),
+    #stack li:nth-child(even) {
+        --rot: 0deg;
+        min-width: 150px;
+        min-height: 62px;
+        font-size: 0.98rem;
+    }
+}
+
+#stack {
+    animation-delay: 0.4s;
+}
+
+#projects {
+    animation-delay: 0.5s;
+}
+
+#contact {
+    animation-delay: 0.6s;
+}
+
+footer {
+    animation-delay: 0.7s;
 }

@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circle with horizontal diameter">
+  <rect width="512" height="512" rx="112" fill="#000000"/>
+  <!-- Circle -->
+  <circle cx="256" cy="256" r="160" stroke="#FFFFFF" stroke-width="20"/>
+  <!-- Horizontal diameter line -->
+  <line x1="96" y1="256" x2="416" y2="256" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+  <!-- Center point -->
+  <circle cx="256" cy="256" r="8" fill="#FFFFFF"/>
+  <!-- Upside-down V -->
+  <polyline points="170,360 256,190 342,360" stroke="#FFFFFF" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

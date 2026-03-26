@@ -9,9 +9,12 @@
 <body>
     <header>
         <nav>
-            <div class="logo">My Name</div>
+            <a class="logo" href="#hero" aria-label="Go to top">
+                <img src="imgs/logo-vlad.svg" alt="Vlad logo">
+            </a>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#stack">Stack</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -27,6 +30,21 @@
         <p>My main tools are JavaScript, C, Java, and C#. I am constantly improving my knowledge because I strive to create products I can be proud of. I am motivated by seeing real results from my work and growing together with modern technologies.</p>
         <p>Besides programming, I am passionate about sports: I used to do kayaking professionally, but now I enjoy volleyball, mountain biking, and hiking. I am fluent in Ukrainian, speak English at a B2 level, and Slovak at a B1-B2 level.</p>
     </section>
+
+    <section id="stack" class="stack-section">
+        <h2>My Tech Stack</h2>
+        <div class="stack-container">
+            <ul>
+                <li>JavaScript</li>
+                <li>C</li>
+                <li>Java</li>
+                <li>C#</li>
+                <li>HTML / CSS</li>
+                <li>Node.js (basic backend)</li>
+            </ul>
+        </div>
+    </section>
+
     <section id="projects">
         <h2>My Projects</h2>
         <div class="project">
@@ -43,7 +61,7 @@
         <p>Email: canoingpro@gmail.com</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/vlad-daniliuk-998547318" target="_blank" rel="noopener noreferrer">My LinkedIn</a></p>
 
-        <form method="POST" action="mailto:canoingpro@gmail.com" enctype="text/plain" class="contact-form">
+        <form id="contactForm" class="contact-form">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -57,6 +75,7 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
+            <div id="formStatus" style="margin-top:1rem;"></div>
         </form>
     </section>
     <footer>

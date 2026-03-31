@@ -8,6 +8,8 @@ const requiredEnv = [
     "CALENDAR_ID",
 ];
 
+const worked = new Set();
+
 function createAuthClient() {
     const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
@@ -41,7 +43,7 @@ function alarm(event){
     console.log(`Alarm: ${event.summary}, ${event.start?.dateTime || event.start?.date}`);
 }
 
-async function chackEvents(calendar){
+async function checkEvents(calendar){
 
     const response = await calendar.events.list(
         {
@@ -62,8 +64,9 @@ async function chackEvents(calendar){
     for(const event of events){
         const normalized = normalizeEventsStart(event);
 
-        if(normalized && now < normalized.timestamp && normalized.timestamp < now + interval){
+        if(normalized && now <= normalized.timestamp && normalized.timestamp <= now + interval && !worked.has(event.id)){
             alarm(event);
+            worked.add(event.id);
             return;
         }
     }
@@ -84,34 +87,14 @@ async function main() {
 
     const calendar = google.calendar({version: "v3", auth});
 
-    const response = await calendar.events.list(
-        {
-            calendarId: process.env.CALENDAR_ID,
-            timeMin: new Date().toISOString(),
-            maxResults: 5,
-            singleEvents: true,
-            orderBy: "startTime",
+    await checkEvents(calendar);
+    setInterval(async () => {
+        try {
+            await checkEvents(calendar);
+        } catch (e) {
+            console.error("There was a problem with an error: ", e.message);
         }
-    )
-    const events = response.data.items || [];
-    if (events.length === 0) {
-        console.log("No events found.");
-    }else{
-        for(const event of events) {
-            const start = event.start?.dateTime || event.start?.date || "No start time";
-            console.log(`Start: ${start} Summary: ${event.summary || "No summary"}`);
-        }
-    }
-
-    for(const event of events) {
-        const normalizedEvent = normalizeEventsStart(event);
-        if(!normalizedEvent){
-            console.log("Skip event without valid start: ", event.summary || "No summary");
-            continue;
-        }
-        console.log(normalizedEvent.iso, event.summary || "No summary");
-    }
-    await chackEvents(calendar);
+    }, 60_000);
 }
 
 main().catch((error) => {

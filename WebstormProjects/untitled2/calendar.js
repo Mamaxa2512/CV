@@ -1,4 +1,5 @@
 const {google} = require("googleapis");
+const player = require("play-sound")();
 require("dotenv").config();
 const requiredEnv = [
     "GOOGLE_CLIENT_ID",
@@ -39,8 +40,17 @@ function normalizeEventsStart(event){
     };
 }
 
+function playSound() {
+    player.play("sounds/Skillet_Monster.mp3", (err) =>{
+        if (err) {
+            console.error("cannot play Skillet_Monster: ", err.message);
+        }
+    });
+}
+
 function alarm(event){
     console.log(`Alarm: ${event.summary}, ${event.start?.dateTime || event.start?.date}`);
+    playSound();
 }
 
 async function checkEvents(calendar){
